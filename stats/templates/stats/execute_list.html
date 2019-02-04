@@ -5,6 +5,7 @@
     <div class="container">
         <form method="POST">{% csrf_token %}
             {{ form.as_p }}
+            <p>{{ error }}</p>
             <button type="submit" class="save">Go</button>
         </form>
         {% for key, value in out.items %}

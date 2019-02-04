@@ -1,11 +1,20 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <div>
-        <h2>Nieuwe post</h2>
-        <form method="POST" class="post-form">{% csrf_token %}
+    {% include 'blog/inc_blog_title.html' %}
+    <div class="container row">
+        <div class="col s6">
+            <a href="{{request.META.HTTP_REFERER}}">Cancel</a>
+        </div>
+        <div class="col s6 right-align">
+        </div>
+    </div>
+    <div class="container">
+        <hr>
+        <h5 class="orange-text">{{ title }}</h5>
+        <form method="POST">{% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="save">Save</button>
+            <button type="submit">Save</button>
         </form>
     </div>
 {% endblock %}

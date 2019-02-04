@@ -1,13 +1,15 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-    <div>
+    {% include 'blog/inc_blog_title.html' %}
+    {% include 'blog/inc_post_new.html' %}
+    <div class="container">
         {% for post in posts %}
         <div>
-            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <p>{{ post.published_date }}</p>
-            <p>{{ post.text|linebreaksbr }}</p>
             <hr>
+            <h5><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h5>
+            <b>{{ post.published_date }}</b>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
         {% endfor %}
     </div>

@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>My Site</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}" media="screen,projection">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen,projection">
+</head>
+<body>
+    <header>
+        <nav class="light-blue lighten-1" role="navigation">
+            <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">My Site</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/">Blog</a></li>
+                    <li><a href="/statistics">Statistics</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
+                </ul>
+
+                <ul id="nav-mobile" class="sidenav">
+                    <li><a href="/">Blog</a></li>
+                    <li><a href="/statistics">Statistics</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="/logout">Logout</a></li>
+                    {% else %}
+                        <li><a href="/login">Login</a></li>
+                    {% endif %}
+                </ul>
+                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="page-footer orange">
+        <div class="container">
+            <h5>Navigate</h5>
+            <ul>
+                <li><a class="white-text" href="/">Home</a></li>
+                <li><a class="white-text" href="/statistics">Statistics</a></li>
+            </ul>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <p>Made by Bram&emsp;Design from <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>&emsp;Django tutorial from <a class="orange-text text-lighten-3" href="https://tutorial.djangogirls.org/en/">Django Girls</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

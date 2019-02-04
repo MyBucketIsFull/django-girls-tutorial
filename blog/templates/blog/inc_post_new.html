@@ -1,0 +1,9 @@
+<div class="container row">
+    <div class="col s6">
+    </div>
+    <div class="col s6 right-align">
+        {% if user.is_authenticated %}
+            <a href="{% url 'post_new' %}">Create new post</a>
+        {% endif %}
+    </div>
+</div>

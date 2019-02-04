@@ -46,21 +46,7 @@ def post_edit(request, pk):
 
 
 def auth_register(request):
-    if request.user.is_authenticated:
-        return redirect('post_list')
-
-    if request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = request.POST['username']
-            password = request.POST['password1']
-            user = authenticate(request, username=username, password=password)
-            login(request, user)
-            return redirect('post_list')
-    else:
-        form = UserCreationForm()
-    return render(request, 'blog/auth_register.html', {'form': form})
+    return redirect('auth_login')
 
 
 def auth_login(request):
